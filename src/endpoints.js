@@ -1,9 +1,16 @@
-const users = require("./users");
 let expression = true;
+const Character = require("../models/character");
 
 module.exports = function (app) {
   app.get("/api/characters", (req, res) => {
-    console.log("get all characters route hit");
+    // get all results from the characters database
+    Character.find({}, (err, characters) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(characters);
+      }
+    });
   });
   app.get("/api/characters/random", (req, res) => {
     console.log("get a random character route hit");
