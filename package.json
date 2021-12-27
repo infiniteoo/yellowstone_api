@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/infiniteoo/yellowstone_api/issues"
   },
-  "homepage": "https://github.com/infiniteoo/yellowstone_api#readme"
+  "homepage": "https://github.com/infiniteoo/yellowstone_api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "config": "^3.3.6",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.4"
+  }
 }
