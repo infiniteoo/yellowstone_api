@@ -2,14 +2,27 @@ const users = require("./users");
 let expression = true;
 
 module.exports = function (app) {
-  /* NOTE: 100% automatic */
-  app.get("/api/character/:id", (req, res) => {
-    /*  res.setHeader("Content-Type", "application/json");
-    const dataId = users.getUser(req.params.id);
-    const dataObj = users.getUser(req.query.obj);
+  app.get("/api/characters", (req, res) => {
+    console.log("get all characters route hit");
+  });
+  app.get("/api/characters/random", (req, res) => {
+    console.log("get a random character route hit");
+  });
 
-    if (expression) return res.status(200).send(true);
-    return res.status(404).send(false); */
+  app.get("/api/characters/:category", (req, res) => {
+    console.log("get a character by category route hit");
+  });
+
+  app.get("/api/characters/:limit&:offset", (req, res) => {
+    console.log("get a character by limit and offset route hit");
+  });
+
+  app.get("/api/characters/:name", (req, res) => {
+    console.log("get a character by name route hit");
+  });
+
+  /* NOTE: 100% automatic */
+  app.get("/api/characters/:id", (req, res) => {
     console.log("api character id route hit");
   });
 
