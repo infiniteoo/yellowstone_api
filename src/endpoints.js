@@ -41,6 +41,13 @@ module.exports = function (app) {
   /* NOTE: 100% automatic */
   app.get("/api/characters/:id", (req, res) => {
     console.log("api character id route hit");
+    Character.findById(req.params.id, (err, character) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(character);
+      }
+    });
   });
 
   /* NOTE: 100% automatic */
