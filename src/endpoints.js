@@ -26,7 +26,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/characters/:category", (req, res) => {
+  app.get("/api/characters/category/:category", (req, res) => {
     console.log("get a character by category route hit");
   });
 
@@ -34,14 +34,17 @@ module.exports = function (app) {
     console.log("get a character by limit and offset route hit");
   });
 
-  app.get("/api/characters/:name", (req, res) => {
+  app.get("/api/characters/name/:name", (req, res) => {
     console.log("get a character by name route hit");
-    // search database for a character with the name that matches the name in the url
-    Character.find({ name: req.params.name }, (err, character) => {
+
+    console.log(req.params.name);
+
+    // search database for keyword in name
+    Character.find({ name: { $regex: req.params.name } }, (err, characters) => {
       if (err) {
         res.send(err);
       } else {
-        res.json(character);
+        res.json(characters);
       }
     });
   });
