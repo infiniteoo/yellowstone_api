@@ -14,6 +14,16 @@ module.exports = function (app) {
   });
   app.get("/api/characters/random", (req, res) => {
     console.log("get a random character route hit");
+    // get all results from the characters database then pick a random one
+    Character.find({}, (err, characters) => {
+      if (err) {
+        res.send(err);
+      } else {
+        const randomCharacter =
+          characters[Math.floor(Math.random() * characters.length)];
+        res.json(randomCharacter);
+      }
+    });
   });
 
   app.get("/api/characters/:category", (req, res) => {
