@@ -34,6 +34,18 @@ module.exports = function (app) {
     });
   });
 
+  // get a random quote from the database
+  app.get("/api/quotes/random", (req, res) => {
+    Quote.find({}, (err, quotes) => {
+      if (err) {
+        res.send(err);
+      } else {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        res.json(randomQuote);
+      }
+    });
+  });
+
   // get all episodes
   app.get("/api/episodes", (req, res) => {
     console.log("api/episodes route hit");
