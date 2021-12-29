@@ -1,8 +1,19 @@
 let expression = true;
 const Character = require("../models/character");
 const Episode = require("../models/episode");
+const Quote = require("../models/quote");
 
 module.exports = function (app) {
+  // get all quotes
+  app.get("/api/quotes", (req, res) => {
+    Quote.find({}, (err, quotes) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(quotes);
+    });
+  });
+
   // get all episodes
   app.get("/api/episodes", (req, res) => {
     console.log("api/episodes route hit");
@@ -38,10 +49,6 @@ module.exports = function (app) {
       }
     });
   });
-
-  
-
-
 
   app.get("/api/characters", (req, res) => {
     // get all results from the characters database
