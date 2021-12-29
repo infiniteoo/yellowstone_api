@@ -14,6 +14,18 @@ module.exports = function (app) {
     });
   });
 
+  // get quote by id
+  app.get("/api/quotes/:id", (req, res) => {
+    Quote.findById(req.params.id, (err, quote) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(quote);
+    });
+  });
+
+  
+
   // get all episodes
   app.get("/api/episodes", (req, res) => {
     console.log("api/episodes route hit");
