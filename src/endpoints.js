@@ -39,6 +39,19 @@ module.exports = function (app) {
     });
   });
 
+  // get death count by name
+  app.get("/api/death-count/:name", (req, res) => {
+    Death.count({ death: req.params.name }, (err, count) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(count);
+      }
+    });
+  });
+
+  
+
 
   // get all quotes
   app.get("/api/quotes", (req, res) => {
