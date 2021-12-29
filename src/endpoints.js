@@ -1,7 +1,34 @@
 let expression = true;
 const Character = require("../models/character");
+const Episode = require("../models/episode");
 
 module.exports = function (app) {
+  // get all episodes
+  app.get("/api/episodes", (req, res) => {
+    console.log("api/episodes route hit");
+    Episode.find({}, (err, episodes) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(episodes);
+      }
+    });
+  });
+
+  // get all episodes by series
+  app.get("/api/episodes/:series", (req, res) => {
+    console.log("api/episodes/:series route hit");
+    Episode.find({ series: req.params.series }, (err, episodes) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(episodes);
+      }
+    });
+  });
+
+  
+
   app.get("/api/characters", (req, res) => {
     // get all results from the characters database
     Character.find({}, (err, characters) => {

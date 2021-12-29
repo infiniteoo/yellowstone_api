@@ -8,6 +8,7 @@ app.use(express.json({ extended: false }));
 
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 const Character = require("./models/character");
+const Episode = require("./models/episode");
 //connect to mongoose
 connectDB();
 
