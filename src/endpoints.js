@@ -46,6 +46,16 @@ module.exports = function (app) {
     });
   });
 
+  // get quote by author
+  app.get("/api/quotes/author/:author", (req, res) => {
+    Quote.find({ author: req.params.author }, (err, quotes) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(quotes);
+    });
+  });
+
   // get all episodes
   app.get("/api/episodes", (req, res) => {
     console.log("api/episodes route hit");
