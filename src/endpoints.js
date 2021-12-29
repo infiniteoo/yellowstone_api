@@ -56,6 +56,20 @@ module.exports = function (app) {
     });
   });
 
+  // get random quote by author
+  app.get("/api/quotes/author/:author/random", (req, res) => {
+    Quote.find({ author: req.params.author }, (err, quotes) => {
+      if (err) {
+        res.send(err);
+      } else {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        res.json(randomQuote);
+      }
+    });
+  });
+
+  
+
   // get all episodes
   app.get("/api/episodes", (req, res) => {
     console.log("api/episodes route hit");
