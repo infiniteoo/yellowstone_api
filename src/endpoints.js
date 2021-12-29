@@ -16,6 +16,17 @@ module.exports = function (app) {
     });
   });
 
+  // create death-count route to get total number of deaths
+  app.get("/api/deaths-count", (req, res) => {
+    Death.count({}, (err, count) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(count);
+      }
+    });
+  });
+
   // get all quotes
   app.get("/api/quotes", (req, res) => {
     Quote.find({}, (err, quotes) => {
