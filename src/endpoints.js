@@ -24,7 +24,15 @@ module.exports = function (app) {
     });
   });
 
-  
+  // get quotes by series
+  app.get("/api/quotes/series/:series", (req, res) => {
+    Quote.find({ series: req.params.series }, (err, quotes) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(quotes);
+    });
+  });
 
   // get all episodes
   app.get("/api/episodes", (req, res) => {
