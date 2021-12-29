@@ -27,7 +27,21 @@ module.exports = function (app) {
     });
   });
 
+  // get episode by id (:id)
+  app.get("/api/episodes/:id", (req, res) => {
+    console.log("api/episodes/:id route hit");
+    Episode.findById(req.params.id, (err, episode) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(episode);
+      }
+    });
+  });
+
   
+
+
 
   app.get("/api/characters", (req, res) => {
     // get all results from the characters database
