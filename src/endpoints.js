@@ -2,8 +2,20 @@ let expression = true;
 const Character = require("../models/character");
 const Episode = require("../models/episode");
 const Quote = require("../models/quote");
+const Death = require("../models/death");
 
 module.exports = function (app) {
+  // get all deaths
+  app.get("/api/deaths", (req, res) => {
+    Death.find({}, (err, deaths) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(deaths);
+      }
+    });
+  });
+
   // get all quotes
   app.get("/api/quotes", (req, res) => {
     Quote.find({}, (err, quotes) => {
@@ -67,8 +79,6 @@ module.exports = function (app) {
       }
     });
   });
-
-  
 
   // get all episodes
   app.get("/api/episodes", (req, res) => {
