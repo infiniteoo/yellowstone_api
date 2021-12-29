@@ -17,7 +17,7 @@ module.exports = function (app) {
   });
 
   // create death-count route to get total number of deaths
-  app.get("/api/deaths-count", (req, res) => {
+  app.get("/api/death-count", (req, res) => {
     Death.count({}, (err, count) => {
       if (err) {
         res.send(err);
@@ -26,6 +26,19 @@ module.exports = function (app) {
       }
     });
   });
+
+  // get a random death
+  app.get("/api/random-death", (req, res) => {
+    Death.find({}, (err, deaths) => {
+      if (err) {
+        res.send(err);
+      } else {
+        const randomDeath = deaths[Math.floor(Math.random() * deaths.length)];
+        res.json(randomDeath);
+      }
+    });
+  });
+
 
   // get all quotes
   app.get("/api/quotes", (req, res) => {
