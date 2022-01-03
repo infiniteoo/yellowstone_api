@@ -20,6 +20,9 @@ const episodeSchema = mongoose.Schema({
   series: {
     type: String,
   },
+  synopsis: {
+    type: String,
+  },
 });
 
 const Episode = (module.exports = mongoose.model("Episode", episodeSchema));

@@ -254,6 +254,10 @@
           "type": "string",
           "example": "Yellowstone"
         },
+        "nickname": {
+          "type": "string",
+          "example": "Daddy"
+        },
         "portrayed": {
           "type": "string",
           "example": "Kevin Costner"
@@ -266,52 +270,33 @@
     "Episodes": {
       "type": "object",
       "properties": {
-        "name": {
+        "title": {
           "type": "string",
-          "example": "Jhon Doe"
+          "example": "Daybreak"
         },
-        "age": {
+        "synopsis": {
+          "type": "string",
+          "example": "John Dutton tries to protect his ranch from land developers, an Indian reservation and America's first national park."
+        },
+        "season": {
           "type": "number",
-          "example": 29
+          "example": "1"
         },
-        "parents": {
-          "xml": {
-            "name": "parents"
-          },
-          "$ref": "#/definitions/Parents"
+        "episode": {
+          "type": "number",
+          "example": "1"
         },
-        "diplomas": {
+        "air_date": {
+          "type": "string",
+          "example": "June 20th, 2018"
+        },
+        "characters": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "school": {
-                "type": "string",
-                "example": "XYZ University"
-              },
-              "year": {
-                "type": "number",
-                "example": 2020
-              },
-              "completed": {
-                "type": "boolean",
-                "example": true
-              },
-              "internship": {
-                "type": "object",
-                "properties": {
-                  "hours": {
-                    "type": "number",
-                    "example": 290
-                  },
-                  "location": {
-                    "type": "string",
-                    "example": "XYZ Company"
-                  }
-                }
-              }
-            }
-          }
+          "example": "[John Dutton], [Jamie Dutton]"
+        },
+        "series": {
+          "type": "string",
+          "example": "Yellowstone"
         }
       },
       "xml": {
@@ -321,22 +306,26 @@
     "Quotes": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "example": "Jhon Doe"
+        "id": {
+          "type": "ObjectID",
+          "example": "61d360d0d98000b801df0ff9"
         },
-        "age": {
-          "type": "number",
-          "example": 29
-        },
-        "about": {
+        "quote": {
           "type": "string",
-          "example": ""
+          "example": "God sure finds interesting ways to put people out of business."
+        },
+        "author": {
+          "type": "string",
+          "example": "Kayce Dutton"
+        },
+        "series": {
+          "type": "string",
+          "example": "Yellowstone"
         }
       },
-      "required": ["name", "age"],
+      "required": ["quote", "author"],
       "xml": {
-        "name": "AddUser"
+        "name": "Quotes"
       }
     },
     "Deaths": {
