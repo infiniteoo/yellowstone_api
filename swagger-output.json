@@ -264,7 +264,7 @@
         }
       },
       "xml": {
-        "name": "Parents"
+        "name": "Characters"
       }
     },
     "Episodes": {
@@ -300,7 +300,7 @@
         }
       },
       "xml": {
-        "name": "User"
+        "name": "Episodes"
       }
     },
     "Quotes": {
@@ -331,22 +331,39 @@
     "Deaths": {
       "type": "object",
       "properties": {
-        "name": {
+        "death": {
           "type": "string",
-          "example": "Jhon Doe"
+          "example": "Roarke Morris"
         },
-        "age": {
+        "cause": {
+          "type": "string",
+          "example": "Rattlesnake bite to the face."
+        },
+        "responsible": {
+          "type": "string",
+          "example": "Rip Wheeler"
+        },
+        "season": {
           "type": "number",
-          "example": 29
+          "example": "4"
         },
-        "about": {
+        "last_words": {
           "type": "string",
-          "example": ""
+          "example": "Oh no!"
+        },
+
+        "episode": {
+          "type": "number",
+          "example": "1"
+        },
+        "number_of_deaths": {
+          "type": "number",
+          "example": "1"
         }
       },
-      "required": ["name", "age"],
+
       "xml": {
-        "name": "AddUser"
+        "name": "Deaths"
       }
     }
   }
