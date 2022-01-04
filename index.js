@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);
-  console.log("API documentation: http://localhost:3000/doc");
+  console.log("API documentation: http://localhost:5000/doc");
 });
 
 /* Endpoints */
